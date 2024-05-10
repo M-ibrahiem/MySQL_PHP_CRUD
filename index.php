@@ -1,4 +1,11 @@
  <?php include("layouts/header.php") ?>
+ <?php 
+ if(isset($_POST['save'])){
+    echo "<pre>";
+    var_dump($_POST);
+    die();
+ }
+ ?>
 
  <div class="container">
      <div class="wraper p-5 m-5 ">

@@ -1,11 +1,23 @@
  <?php include("layouts/header.php") ?>
- <?php 
- if(isset($_POST['save'])){
-    echo "<pre>";
-    var_dump($_POST);
-    die();
- }
- ?>
+ <?php include_once("config/db.php") ?>
+ <?php
+    if (isset($_POST['save'])) {
+        $name     = $_POST['name'];
+        $email    = $_POST['email'];
+        $mobile   = $_POST['mobile'];
+        $password = $_POST['password'];
+
+        $add_sql = " INSERT INTO `users`( `name`, `email`, `password`, `mobile`) VALUES
+         ('$name','$email','$password','$mobile')";
+        $q = mysqli_query($conn, $add_sql);
+        if (!$q) {
+            die(mysqli_error($conn));
+        } else
+            echo "User add scussfully";
+
+            
+    }
+    ?>
 
  <div class="container">
      <div class="wraper p-5 m-5 ">

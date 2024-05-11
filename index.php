@@ -7,16 +7,29 @@
         $email    = $_POST['email'];
         $mobile   = $_POST['mobile'];
         $password = $_POST['password'];
-
+        // Insert
         $insert = " INSERT INTO `users`( `name`, `email`, `password`, `mobile`) VALUES
          ('$name','$email','$password','$mobile')";
         $insert_q = mysqli_query($conn, $insert);
         if (!$insert_q) {
             die(mysqli_error($conn));
         } else {
-            $action = 'add';
+            $action = "add";
         }
     }
+    // function del
+    if(isset($_GET['action']) && $_GET['action']=='del'){
+        $id = $_GET ['id'];
+        $delete = "DELETE FROM users WHERE id = $id";
+        $delete_q = mysqli_query($conn,$delete); 
+        if (!$delete_q) {
+            die(mysqli_error($conn));
+         } else {
+        $action = "del";
+    }
+    }
+
+    // Select
     $select = "SELECT * FROM users";
     $select_q = mysqli_query($conn, $select);
     $user = $select_q->fetch_assoc();
@@ -25,7 +38,7 @@
  <div class="container">
      <div class="wraper p-5 m-5 ">
          <div class="d-flex p-2 justify-content-between">
-             <h2>All Users</h2>
+         <a href="index.php" style="text-decoration: none; color: black;"><h2>All Users</h2></a>
              <div><a href="add_user.php"><i data-feather="user-plus"></i></a></div>
 
          </div>
@@ -41,7 +54,7 @@
                      </tr>
                  </thead>
                  <tbody>
-                     <?php while ($user = $select_q->fetch_assoc()) : ?>
+                     <?php while ($user = $select_q->fetch_assoc()): ?>
                          <tr>
                              <th><?= $user['id'] ?></th>
                              <td><?= $user['name'] ?></td>
@@ -49,13 +62,13 @@
                              <td><?= $user['mobile'] ?></td>
                              <td>
                                  <div class="d-flex p-2 justify-content-evenly">
-                                     <i data-feather="trash-2" class="text-danger"></i>
-                                     <a href="edit.php"><i data-feather="edit" class="text-success"></i></a>
+                                     <i onclick="confirmDelete(<?=$user['id']?>);" data-feather="trash-2" class="text-danger"></i>
+                                     <i data-feather="edit" class="text-success"></i>
                                  </div>
 
                              </td>
-                         </tr>
-                     <?php endwhile ?>
+                            </tr>
+                            <?php endwhile ;?>
 
                  </tbody>
              </table>

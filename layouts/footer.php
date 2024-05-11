@@ -4,16 +4,17 @@
 <script src="resources/js/toster.js"></script>
 <script src="resources/js/main.js"></script>
 
-<?php if($action != false):
- if ($action == 'add') : ?>
+<?php if ($action != false && $action == 'add'): ?>
     <script>
-        show_add()
+        show_add(); // استدعاء وظيفة JavaScript
     </script>
+<?php endif; ?>
 
-<?php endif?>
-<?php endif ?>
-
-
+<?php if ($action !== false && $action === 'del'): ?>
+    <script>
+        show_del(); // استدعاء وظيفة JavaScript
+    </script>
+<?php endif; ?>
 
 
 <script>

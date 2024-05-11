@@ -18,5 +18,36 @@ toastr.options = {
   "hideMethod": "fadeOut"
 }
 Command: toastr["success"]("User Add Sucsessfully", "Add User");
+}
+function show_del(){
+
+toastr.options = {
+  "closeButton": true,
+  "debug": false,
+  "newestOnTop": false,
+  "progressBar": false,
+  "positionClass": "toast-top-right",
+  "preventDuplicates": false,
+  "onclick": null,
+  "showDuration": "300",
+  "hideDuration": "1000",
+  "timeOut": "5000",
+  "extendedTimeOut": "1000",
+  "showEasing": "swing",
+  "hideEasing": "linear",
+  "showMethod": "fadeIn",
+  "hideMethod": "fadeOut"
+}
+Command: toastr["error"]("User Deleted", "DELETE User");
 
 }
+
+
+  function confirmDelete(id) {
+    var confirmDelete = confirm("Are you sure you want to delete this user?");
+    if (confirmDelete) {
+        window.location.href = 'index.php?action=del&id=' + id;
+    }
+}
+
+confirm_delete

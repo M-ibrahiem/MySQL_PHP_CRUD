@@ -6,15 +6,21 @@
 
 <?php if ($action != false && $action === 'add'): ?>
     <script>
-        show_add(); // استدعاء وظيفة JavaScript
+        show_add();
     </script>
 <?php endif; ?>
 
 <?php if ($action != false && $action === 'del'): ?>
     <script>
-        show_del(); // استدعاء وظيفة JavaScript
+        show_del(); 
     </script>
 <?php endif; ?>
+<?php if ($action != false && $action === 'edit'): ?>
+    <script>
+        show_edit(); 
+    </script>
+<?php endif; ?>
+
 
 
 <script>

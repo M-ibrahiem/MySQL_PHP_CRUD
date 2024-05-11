@@ -50,4 +50,9 @@ Command: toastr["error"]("User Deleted", "DELETE User");
     }
 }
 
-confirm_delete
+  function confirmEdit(id) {
+    if (confirmEdit) {
+        window.location.href = 'add_user.php?action=edit&id=' + id;
+    }
+}
+

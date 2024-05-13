@@ -11,7 +11,6 @@ if (isset($_GET['action']) && $_GET['action'] == 'edit') {
     $sql = "SELECT * FROM users WHERE id = $id ";
     $user = mysqli_query($conn, $sql);
     if ($user) {
-        // var_dump($user->fetch_assoc());
         $title = "Update";
         $current_user = $user->fetch_assoc();
         $name = $current_user['name'];
@@ -49,14 +48,14 @@ if (isset($_GET['action']) && $_GET['action'] == 'edit') {
                     <label class="form-label">Password</label>
                     <input type="password" class="form-control" value="<?= $password ?>" id="password" placeholder="enter your password" name="password" autocomplete="false">
                 </div>
-                
-                <?php if (isset($_GET['id'])):?>
 
-                    <input type="hidden" name="id" value="<?=$_GET['id']?>">
-                    
-                <?php endif?>
+                <?php if (isset($_GET['id'])) : ?>
 
-                <button type="submit" name="save" class="btn btn-primary"><?= $btn_title ?></button>
+                    <input type="hidden" name="id" value="<?= $_GET['id'] ?>">
+
+                <?php endif ?>
+
+                <input type="submit" name="save" value="<?= $btn_title ?>" value="" class="btn btn-primary">
             </form>
         </div>
     </div>

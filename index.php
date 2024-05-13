@@ -10,22 +10,24 @@ if (isset($_POST['save'])) {
     $email = $_POST['email'];
     $mobile = $_POST['mobile'];
     $password = $_POST['password'];
-
     if ($_POST['save'] == "Save") {
+   
         // Insert
-        $save_sql = "INSERT INTO `users` (`name`, `email`, `password`, `mobile`) VALUES ('$name', '$email', '$password', '$mobile')";
+        $save_sql = "INSERT INTO `users`( `name`, `email`, `mobile`, `password`) VALUES ('$name','$email','$mobile','$password')";
     } else {
+        // Update
         $id = $_POST['id'] ?? null;
-        $save_sql = "UPDATE `users` SET `name`='$name', `email`='$email', `mobile`='$mobile', `password`='$password' WHERE id = $id";
+        $save_sql = "UPDATE `users` SET `name`='$name',`email`='$email',`mobile`='$mobile',`password`='$password' WHERE `id`='$id'";
     }
 
     // Execute the query
-    $insert_q = mysqli_query($conn, $save_sql);
-    if (!$insert_q) {
+    $res_save = mysqli_query($conn, $save_sql);
+    
+    if (!$res_save) {
         die(mysqli_error($conn));
     } else {
         if (isset($_POST['id'])) {
-            $action = "edit";
+            $action = "update";
         } else {
             $action = "add";
         }
@@ -88,5 +90,6 @@ $select_q = mysqli_query($conn, $select);
         </div>
     </div>
 </div>
+
 
 <?php include("layouts/footer.php") ?>

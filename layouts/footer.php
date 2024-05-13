@@ -4,22 +4,25 @@
 <script src="resources/js/toster.js"></script>
 <script src="resources/js/main.js"></script>
 
-<?php if ($action != false && $action === 'add'): ?>
+
+<?php if ($action != false && $action == 'add'): ?>
     <script>
         show_add();
     </script>
 <?php endif; ?>
 
-<?php if ($action != false && $action === 'del'): ?>
+<?php if ($action != false && $action == 'del'): ?>
     <script>
         show_del(); 
     </script>
 <?php endif; ?>
-<?php if ($action != false && $action === 'edit'): ?>
+<?php if ($action != false && $action =='update'): ?>
     <script>
-        show_edit(); 
+        show_update(); 
     </script>
 <?php endif; ?>
+
+
 
 
 

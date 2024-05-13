@@ -39,9 +39,8 @@ toastr.options = {
   "hideMethod": "fadeOut"
 }
 Command: toastr["error"]("User Deleted", "DELETE User");
-
 }
-function show_edit(){
+function show_update(){
 
 toastr.options = {
   "closeButton": true,
@@ -60,7 +59,7 @@ toastr.options = {
   "showMethod": "fadeIn",
   "hideMethod": "fadeOut"
 }
-Command: toastr["succsess"]("User Update successfully", "Update  User");
+Command: toastr["success"]("User Update successfully", "Update User");
 }
 
 
